@@ -8,11 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		177C07262012F79800799639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C07252012F79800799639 /* AppDelegate.swift */; };
-		177C07282012F79800799639 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C07272012F79800799639 /* ViewController.swift */; };
-		177C072B2012F79800799639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177C07292012F79800799639 /* Main.storyboard */; };
 		177C072D2012F79800799639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177C072C2012F79800799639 /* Assets.xcassets */; };
 		177C07302012F79800799639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177C072E2012F79800799639 /* LaunchScreen.storyboard */; };
 		177C073B2012F79800799639 /* PortfolioAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C073A2012F79800799639 /* PortfolioAppTests.swift */; };
+		177C074E2012FB1600799639 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C074A2012FB1500799639 /* PortfolioViewController.swift */; };
+		177C074F2012FB1600799639 /* PortfolioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C074B2012FB1500799639 /* PortfolioPresenter.swift */; };
+		177C07502012FB1600799639 /* PortfolioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C074C2012FB1500799639 /* PortfolioInteractor.swift */; };
+		177C07512012FB1600799639 /* PortfolioRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C074D2012FB1500799639 /* PortfolioRouter.swift */; };
+		177C07532013002D00799639 /* PortfolioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177C07522013002D00799639 /* PortfolioViewController.xib */; };
+		177C07552013007900799639 /* PortfolioBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C07542013007900799639 /* PortfolioBuilder.swift */; };
+		177C075820130BAF00799639 /* ConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C075620130BAF00799639 /* ConfigurationType.swift */; };
+		177C075920130BAF00799639 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C075720130BAF00799639 /* Configuration.swift */; };
+		177C075E20130C8800799639 /* PortfolioServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C075A20130C8800799639 /* PortfolioServiceResponse.swift */; };
+		177C075F20130C8800799639 /* PortfolioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C075B20130C8800799639 /* PortfolioService.swift */; };
+		177C076020130C8800799639 /* PortfolioServiceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C075C20130C8800799639 /* PortfolioServiceBuilder.swift */; };
+		177C076120130C8800799639 /* PortfolioServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C075D20130C8800799639 /* PortfolioServiceImplementation.swift */; };
+		177C07652013414600799639 /* InstrumentCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C07632013414600799639 /* InstrumentCellTableViewCell.swift */; };
+		177C07662013414600799639 /* InstrumentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177C07642013414600799639 /* InstrumentCellTableViewCell.xib */; };
+		177C076820135CBD00799639 /* InstrumentCellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C076720135CBD00799639 /* InstrumentCellDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +41,27 @@
 /* Begin PBXFileReference section */
 		177C07222012F79800799639 /* PortfolioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortfolioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		177C07252012F79800799639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		177C07272012F79800799639 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		177C072A2012F79800799639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		177C072C2012F79800799639 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		177C072F2012F79800799639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		177C07312012F79800799639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		177C07362012F79800799639 /* PortfolioAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PortfolioAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		177C073A2012F79800799639 /* PortfolioAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioAppTests.swift; sourceTree = "<group>"; };
 		177C073C2012F79800799639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		177C074A2012FB1500799639 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		177C074B2012FB1500799639 /* PortfolioPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioPresenter.swift; sourceTree = "<group>"; };
+		177C074C2012FB1500799639 /* PortfolioInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioInteractor.swift; sourceTree = "<group>"; };
+		177C074D2012FB1500799639 /* PortfolioRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioRouter.swift; sourceTree = "<group>"; };
+		177C07522013002D00799639 /* PortfolioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioViewController.xib; sourceTree = "<group>"; };
+		177C07542013007900799639 /* PortfolioBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioBuilder.swift; sourceTree = "<group>"; };
+		177C075620130BAF00799639 /* ConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationType.swift; sourceTree = "<group>"; };
+		177C075720130BAF00799639 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		177C075A20130C8800799639 /* PortfolioServiceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioServiceResponse.swift; sourceTree = "<group>"; };
+		177C075B20130C8800799639 /* PortfolioService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioService.swift; sourceTree = "<group>"; };
+		177C075C20130C8800799639 /* PortfolioServiceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioServiceBuilder.swift; sourceTree = "<group>"; };
+		177C075D20130C8800799639 /* PortfolioServiceImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioServiceImplementation.swift; sourceTree = "<group>"; };
+		177C07632013414600799639 /* InstrumentCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCellTableViewCell.swift; sourceTree = "<group>"; };
+		177C07642013414600799639 /* InstrumentCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstrumentCellTableViewCell.xib; sourceTree = "<group>"; };
+		177C076720135CBD00799639 /* InstrumentCellDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCellDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				177C07252012F79800799639 /* AppDelegate.swift */,
-				177C07272012F79800799639 /* ViewController.swift */,
-				177C07292012F79800799639 /* Main.storyboard */,
+				177C07452012FA0E00799639 /* Modules */,
+				177C07472012FA2300799639 /* Configuration */,
+				177C07462012FA1A00799639 /* Services */,
 				177C072C2012F79800799639 /* Assets.xcassets */,
 				177C072E2012F79800799639 /* LaunchScreen.storyboard */,
 				177C07312012F79800799639 /* Info.plist */,
@@ -94,6 +121,66 @@
 				177C073C2012F79800799639 /* Info.plist */,
 			);
 			path = PortfolioAppTests;
+			sourceTree = "<group>";
+		};
+		177C07452012FA0E00799639 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				177C07482012FA5200799639 /* Portfolio */,
+				177C07492012FA6300799639 /* Instrument Detail */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		177C07462012FA1A00799639 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				177C075B20130C8800799639 /* PortfolioService.swift */,
+				177C075C20130C8800799639 /* PortfolioServiceBuilder.swift */,
+				177C075D20130C8800799639 /* PortfolioServiceImplementation.swift */,
+				177C075A20130C8800799639 /* PortfolioServiceResponse.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		177C07472012FA2300799639 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				177C075720130BAF00799639 /* Configuration.swift */,
+				177C075620130BAF00799639 /* ConfigurationType.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		177C07482012FA5200799639 /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				177C0762201340E500799639 /* InstrumentCell */,
+				177C074D2012FB1500799639 /* PortfolioRouter.swift */,
+				177C074C2012FB1500799639 /* PortfolioInteractor.swift */,
+				177C074B2012FB1500799639 /* PortfolioPresenter.swift */,
+				177C074A2012FB1500799639 /* PortfolioViewController.swift */,
+				177C07522013002D00799639 /* PortfolioViewController.xib */,
+				177C07542013007900799639 /* PortfolioBuilder.swift */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		177C07492012FA6300799639 /* Instrument Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Instrument Detail";
+			sourceTree = "<group>";
+		};
+		177C0762201340E500799639 /* InstrumentCell */ = {
+			isa = PBXGroup;
+			children = (
+				177C07632013414600799639 /* InstrumentCellTableViewCell.swift */,
+				177C07642013414600799639 /* InstrumentCellTableViewCell.xib */,
+				177C076720135CBD00799639 /* InstrumentCellDataModel.swift */,
+			);
+			path = InstrumentCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,9 +266,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177C07662013414600799639 /* InstrumentCellTableViewCell.xib in Resources */,
 				177C07302012F79800799639 /* LaunchScreen.storyboard in Resources */,
 				177C072D2012F79800799639 /* Assets.xcassets in Resources */,
-				177C072B2012F79800799639 /* Main.storyboard in Resources */,
+				177C07532013002D00799639 /* PortfolioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +287,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				177C07282012F79800799639 /* ViewController.swift in Sources */,
+				177C075820130BAF00799639 /* ConfigurationType.swift in Sources */,
+				177C07552013007900799639 /* PortfolioBuilder.swift in Sources */,
+				177C07502012FB1600799639 /* PortfolioInteractor.swift in Sources */,
+				177C07512012FB1600799639 /* PortfolioRouter.swift in Sources */,
+				177C074F2012FB1600799639 /* PortfolioPresenter.swift in Sources */,
+				177C07652013414600799639 /* InstrumentCellTableViewCell.swift in Sources */,
+				177C075E20130C8800799639 /* PortfolioServiceResponse.swift in Sources */,
+				177C075F20130C8800799639 /* PortfolioService.swift in Sources */,
+				177C074E2012FB1600799639 /* PortfolioViewController.swift in Sources */,
+				177C076120130C8800799639 /* PortfolioServiceImplementation.swift in Sources */,
+				177C076820135CBD00799639 /* InstrumentCellDataModel.swift in Sources */,
+				177C076020130C8800799639 /* PortfolioServiceBuilder.swift in Sources */,
+				177C075920130BAF00799639 /* Configuration.swift in Sources */,
 				177C07262012F79800799639 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,14 +323,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		177C07292012F79800799639 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				177C072A2012F79800799639 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		177C072E2012F79800799639 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
