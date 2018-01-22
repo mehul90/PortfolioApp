@@ -75,6 +75,45 @@ final class PortfolioServiceImplementation: PortfolioService {
         }        
     }
     
+    func fetchYearlyPrices(forInstrumentCode code: String, completion: @escaping ((InstrumentDetailResponse) -> ())) {
+        let requestURL = URLForInstrumentDetails(instrument: code)
+        guard let requestURLForInstrument = requestURL else {
+            return
+        }
+        let task = self.session.dataTask(with: requestURLForInstrument) { (data, response, error) in
+            guard let data = data else {
+                completion(InstrumentDetailResponse(status: .failure(error: PortfolioServiceError.genericError)))
+                return
+            }
+            
+            do {
+                let response: PortfolioResponseModel = try JSONDecoder().decode(PortfolioResponseModel.self, from: data)
+                completion(InstrumentDetailResponse(status: .success(listViewModel: response)))
+            } catch {
+                completion(InstrumentDetailResponse(status: .failure(error: PortfolioServiceError.genericError)))
+            }
+        }
+        task.resume()
+    }
+    
+    private func URLForInstrumentDetails(instrument: String) -> URLRequest? {
+        let currentDate = Date()
+        let sevenDaysAgo = Calendar.current.date(byAdding: .year, value: -1, to: currentDate)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        let today = dateFormatter.string(from: currentDate)
+        
+        guard let startDate = sevenDaysAgo else {
+            return nil
+        }
+        
+        let lastDate = dateFormatter.string(from: startDate)
+        let stringURL = baseURLString + APIDataSetEndpoint + instrument + ".json?column_index=4&start_date=\(lastDate)&end_date=\(today))&api_key=" + APIKey
+        let url = URL(string: stringURL)
+        return URLRequest(url: url!)
+    }
+    
     private func URLForInstrument(instrument: String) -> URLRequest? {
         let currentDate = Date()
         let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: currentDate)

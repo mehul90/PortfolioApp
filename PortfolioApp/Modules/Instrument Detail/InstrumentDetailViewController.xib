@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InstrumentDetailViewController" customModule="PortfolioApp" customModuleProvider="target">
             <connections>
+                <outlet property="chart" destination="zNV-mv-Skb" id="MpT-pr-uNG"/>
                 <outlet property="lastPrice" destination="GNo-R4-mVb" id="CuM-WS-Tst"/>
+                <outlet property="lastPriceTitle" destination="E5S-Oa-8z5" id="dwX-Ih-7ro"/>
                 <outlet property="loadingIndicator" destination="ccH-em-iVk" id="3cF-Mf-P6C"/>
                 <outlet property="priceChange" destination="zYG-6P-7cl" id="S6X-cT-lmb"/>
                 <outlet property="view" destination="iN0-l3-epB" id="dMS-hA-2f9"/>
@@ -56,7 +58,7 @@
                         <constraint firstItem="GNo-R4-mVb" firstAttribute="top" secondItem="E5S-Oa-8z5" secondAttribute="bottom" constant="6" id="sWD-LS-kYX"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNV-mv-Skb">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNV-mv-Skb" customClass="Chart" customModule="SwiftChart">
                     <rect key="frame" x="0.0" y="127" width="375" height="200"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

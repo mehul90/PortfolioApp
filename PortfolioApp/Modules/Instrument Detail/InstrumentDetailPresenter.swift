@@ -13,7 +13,8 @@ protocol InstrumentDetailViewOutput {
 }
 
 protocol InstrumentDetailInteractorOutput: class {
-    func updateWithData()
+    func updateWithData(chartPoints: [Double])
+    func showError(withMessage message: String)
 }
 
 final class InstrumentDetailPresenter: InstrumentDetailViewOutput, InstrumentDetailInteractorOutput {
@@ -26,15 +27,20 @@ final class InstrumentDetailPresenter: InstrumentDetailViewOutput, InstrumentDet
     func viewDidLoad() {
         view?.showTitle(withString: "\(instrumentDataModel.instrumentName)\n\(instrumentDataModel.instrumentCode) - NASDAQ")
         view?.showLoadingIndicator()
-        
-        updateWithData()//TODO: 
-        
+        interactor.fetchYearlyPrices(forInstrumentCode: instrumentDataModel.instrumentCode)
     }
     
     //MARK:-
-    func updateWithData() {
+    func updateWithData(chartPoints: [Double]) {
         view?.hideLoadingIndicator()
-        view?.setSharePrice(price: instrumentDataModel.instrumentValue)
+        //handle by another data model.
+        let price = (Double(instrumentDataModel.instrumentValue.dropFirst()) ?? 0.0) / 100
+        view?.setSharePrice(price: String(format: "$%.2f", price))
         view?.setPriceChange(attributedText: instrumentDataModel.priceChange)
+        view?.updateChart(withValues: chartPoints)
+    }
+    
+    func showError(withMessage message: String) {
+        view?.showErrorMesage(message: message)
     }
 }

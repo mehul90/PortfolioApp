@@ -35,3 +35,12 @@ struct PortfolioResponse {
 
     let status: Status
 }
+
+struct InstrumentDetailResponse {
+    enum Status {
+        case success(listViewModel: PortfolioResponseModel)
+        case failure(error: Error)
+    }
+    
+    let status: Status
+}

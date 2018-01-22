@@ -11,6 +11,8 @@ import Foundation
 protocol PortfolioService {
     func fetchLatestPricesForInstruments(instruments: [String], completion: @escaping ((PortfolioResponse) -> ()))
     
+    func fetchYearlyPrices(forInstrumentCode code:String, completion: @escaping ((InstrumentDetailResponse) -> ()))
+
 }
 
 //Just for unit testing
