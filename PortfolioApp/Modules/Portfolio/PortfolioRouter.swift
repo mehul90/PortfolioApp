@@ -9,24 +9,17 @@
 import UIKit
 
 protocol PortfolioRouterInput {
-    
+    func presentDetails(forInstrument instrument: InstrumentCellDataModel) //use seperate data model.
 }
 
 final class PortfolioRouter {
-    
-    lazy var viewController: PortfolioViewController = {
-        
-        let controller = PortfolioViewController()
-        controller.title = "Portfolio"
-        let presenter = PortfolioPresenter()
-        presenter.view = controller
-        presenter.coordinator = self
-        let interactor = PortfolioInteractor()
-        interactor.output = presenter
-        presenter.interactor = interactor
-        controller.output = presenter
-        return controller
-    }()
+    weak var viewController: PortfolioViewController!
+
 }
 
-extension PortfolioRouter: PortfolioRouterInput {}
+extension PortfolioRouter: PortfolioRouterInput {
+    func presentDetails(forInstrument instrument: InstrumentCellDataModel) {
+        let detailsPage = InstrumentDetailBuilder.build(withDataModel: instrument)
+        viewController.navigationController?.pushViewController(detailsPage, animated: true)
+    }
+}

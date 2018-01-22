@@ -10,7 +10,8 @@ import UIKit
 
 protocol PortfolioViewOutput {
     func viewDidLoad()
-    func viewWillAppear()
+    func viewDidAppear()
+    func selectedInstrumentAtIndex(index: Int)
     var instrumentsDataModels: [InstrumentCellDataModel] {get}
 }
 
@@ -23,7 +24,7 @@ protocol PortfolioInteractorOutput: class {
 final class PortfolioPresenter: PortfolioViewOutput, PortfolioInteractorOutput {
     weak var view: PortfolioViewInput?
     var interactor: PortfolioInteractorInput!
-    var coordinator: PortfolioRouterInput!
+    var router: PortfolioRouterInput!
 
     var instrumentsDataModels: [InstrumentCellDataModel] = []
     
@@ -31,11 +32,16 @@ final class PortfolioPresenter: PortfolioViewOutput, PortfolioInteractorOutput {
         view?.showLoadingIndicator()
     }
     
-    func viewWillAppear() {
+    func viewDidAppear() {
         interactor.fetchAllInstruments()
     }
     
     //MARK:-
+    
+    func selectedInstrumentAtIndex(index: Int) {
+        router.presentDetails(forInstrument: instrumentsDataModels[index])
+    }
+    
     func update(withDataModels dataModels: [InstrumentCellDataModel]) {
         instrumentsDataModels = dataModels
         view?.hideLoadingIndicator()
@@ -50,9 +56,9 @@ final class PortfolioPresenter: PortfolioViewOutput, PortfolioInteractorOutput {
             .font : UIFont.boldSystemFont(ofSize: 14)
         ]
         let priceChangeAttributedString = NSMutableAttributedString(string: "Today's gain/loss: ", attributes: priceChangeAttributes)
-        
+        let appGreen = UIColor(red:0.42, green:0.74, blue:0.06, alpha:1.0)
         let percentagePriceChangeAttributes: [NSAttributedStringKey: Any] = [
-            .foregroundColor : percentage > 0 ? UIColor.green : UIColor.red,
+            .foregroundColor : percentage > 0 ? appGreen : UIColor.red,
             .font : UIFont.boldSystemFont(ofSize: 14)
         ]
         

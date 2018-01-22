@@ -26,6 +26,12 @@
 		177C07652013414600799639 /* InstrumentCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C07632013414600799639 /* InstrumentCellTableViewCell.swift */; };
 		177C07662013414600799639 /* InstrumentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177C07642013414600799639 /* InstrumentCellTableViewCell.xib */; };
 		177C076820135CBD00799639 /* InstrumentCellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C076720135CBD00799639 /* InstrumentCellDataModel.swift */; };
+		17841C832014F75D0001AF07 /* InstrumentDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17841C7F2014F75C0001AF07 /* InstrumentDetailInteractor.swift */; };
+		17841C842014F75D0001AF07 /* InstrumentDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17841C802014F75C0001AF07 /* InstrumentDetailRouter.swift */; };
+		17841C852014F75D0001AF07 /* InstrumentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17841C812014F75D0001AF07 /* InstrumentDetailViewController.swift */; };
+		17841C862014F75D0001AF07 /* InstrumentDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17841C822014F75D0001AF07 /* InstrumentDetailPresenter.swift */; };
+		17841C882015092D0001AF07 /* InstrumentDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17841C872015092D0001AF07 /* InstrumentDetailBuilder.swift */; };
+		17841C8A20150B160001AF07 /* InstrumentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17841C8920150B160001AF07 /* InstrumentDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,12 @@
 		177C07632013414600799639 /* InstrumentCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCellTableViewCell.swift; sourceTree = "<group>"; };
 		177C07642013414600799639 /* InstrumentCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstrumentCellTableViewCell.xib; sourceTree = "<group>"; };
 		177C076720135CBD00799639 /* InstrumentCellDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCellDataModel.swift; sourceTree = "<group>"; };
+		17841C7F2014F75C0001AF07 /* InstrumentDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentDetailInteractor.swift; sourceTree = "<group>"; };
+		17841C802014F75C0001AF07 /* InstrumentDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentDetailRouter.swift; sourceTree = "<group>"; };
+		17841C812014F75D0001AF07 /* InstrumentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentDetailViewController.swift; sourceTree = "<group>"; };
+		17841C822014F75D0001AF07 /* InstrumentDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentDetailPresenter.swift; sourceTree = "<group>"; };
+		17841C872015092D0001AF07 /* InstrumentDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentDetailBuilder.swift; sourceTree = "<group>"; };
+		17841C8920150B160001AF07 /* InstrumentDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstrumentDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +181,12 @@
 		177C07492012FA6300799639 /* Instrument Detail */ = {
 			isa = PBXGroup;
 			children = (
+				17841C812014F75D0001AF07 /* InstrumentDetailViewController.swift */,
+				17841C8920150B160001AF07 /* InstrumentDetailViewController.xib */,
+				17841C7F2014F75C0001AF07 /* InstrumentDetailInteractor.swift */,
+				17841C822014F75D0001AF07 /* InstrumentDetailPresenter.swift */,
+				17841C802014F75C0001AF07 /* InstrumentDetailRouter.swift */,
+				17841C872015092D0001AF07 /* InstrumentDetailBuilder.swift */,
 			);
 			path = "Instrument Detail";
 			sourceTree = "<group>";
@@ -270,6 +288,7 @@
 				177C07302012F79800799639 /* LaunchScreen.storyboard in Resources */,
 				177C072D2012F79800799639 /* Assets.xcassets in Resources */,
 				177C07532013002D00799639 /* PortfolioViewController.xib in Resources */,
+				17841C8A20150B160001AF07 /* InstrumentDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,12 +310,17 @@
 				177C07552013007900799639 /* PortfolioBuilder.swift in Sources */,
 				177C07502012FB1600799639 /* PortfolioInteractor.swift in Sources */,
 				177C07512012FB1600799639 /* PortfolioRouter.swift in Sources */,
+				17841C842014F75D0001AF07 /* InstrumentDetailRouter.swift in Sources */,
 				177C074F2012FB1600799639 /* PortfolioPresenter.swift in Sources */,
+				17841C882015092D0001AF07 /* InstrumentDetailBuilder.swift in Sources */,
 				177C07652013414600799639 /* InstrumentCellTableViewCell.swift in Sources */,
 				177C075E20130C8800799639 /* PortfolioServiceResponse.swift in Sources */,
+				17841C852014F75D0001AF07 /* InstrumentDetailViewController.swift in Sources */,
 				177C075F20130C8800799639 /* PortfolioService.swift in Sources */,
 				177C074E2012FB1600799639 /* PortfolioViewController.swift in Sources */,
 				177C076120130C8800799639 /* PortfolioServiceImplementation.swift in Sources */,
+				17841C862014F75D0001AF07 /* InstrumentDetailPresenter.swift in Sources */,
+				17841C832014F75D0001AF07 /* InstrumentDetailInteractor.swift in Sources */,
 				177C076820135CBD00799639 /* InstrumentCellDataModel.swift in Sources */,
 				177C076020130C8800799639 /* PortfolioServiceBuilder.swift in Sources */,
 				177C075920130BAF00799639 /* Configuration.swift in Sources */,

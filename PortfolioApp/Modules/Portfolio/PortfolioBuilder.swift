@@ -16,6 +16,9 @@ final class PortfolioBuilder {
         let presenter = PortfolioPresenter()
         presenter.view = controller
         let interactor = PortfolioInteractor()
+        let router = PortfolioRouter()
+        router.viewController = controller
+        presenter.router = router
         interactor.output = presenter
         presenter.interactor = interactor
         controller.output = presenter

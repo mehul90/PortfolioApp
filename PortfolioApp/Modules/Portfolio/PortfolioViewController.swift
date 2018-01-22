@@ -39,9 +39,9 @@ final class PortfolioViewController: UIViewController, PortfolioViewInput, UITab
         output.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        output.viewWillAppear()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        output.viewDidAppear()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +60,10 @@ final class PortfolioViewController: UIViewController, PortfolioViewInput, UITab
         instrumentCell.priceChange.attributedText = dataModel.priceChange
         instrumentCell.accessoryType = .disclosureIndicator
         return instrumentCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.selectedInstrumentAtIndex(index: indexPath.row)
     }
         
     // MARK:- PortfolioViewInput

@@ -22,6 +22,7 @@ final class PortfolioInteractor: PortfolioInteractorInput {
     weak var output: PortfolioInteractorOutput?
     let service: PortfolioService
     let portfolioHoldings: [Instrument]
+    private var cachedResponse:[(PortfolioResponseModel, String)] = []
     
     init(service: PortfolioService = PortfolioServiceBuilder().build()) {
         self.service = service
@@ -33,9 +34,15 @@ final class PortfolioInteractor: PortfolioInteractorInput {
     }
     
     func fetchAllInstruments() {
-        //storage.getInstrumentList()  //gives name, quantity.
+        //TODO: storage.getInstrumentList()  //gives instrument name, quantity.
         
-        //        self.output?.updateWithResponse(response: PortfolioResponse(status: .failure(error: PortfolioServiceError.genericError)))
+        if cachedResponse.count == portfolioHoldings.count {
+            self.output?.update(withDataModels: self.viewModel(fromResponse: cachedResponse))
+            
+            //TODO: calculate portfolio value, gain/loss, percentage gain loss.
+            self.output?.update(header: "$68864.00", gainLoss: 373.445, percentage: 0.43)
+            return
+        }
         
         let instrumentCodes = portfolioHoldings.map {return $0.code}
         
@@ -43,12 +50,14 @@ final class PortfolioInteractor: PortfolioInteractorInput {
             DispatchQueue.main.async {
                 switch response.status {
                 case .success(listViewModel: let responseModel):
+                    self.cachedResponse = responseModel
                     self.output?.update(withDataModels: self.viewModel(fromResponse: responseModel))
                     
                     //TODO: calculate portfolio value, gain/loss, percentage gain loss.
                     self.output?.update(header: "$68864.00", gainLoss: 373.445, percentage: 0.43)
                     break
                 default:
+                    self.output?.showError(withMessage: "Some error !")
                     break
                 }
             }
@@ -58,24 +67,27 @@ final class PortfolioInteractor: PortfolioInteractorInput {
     private func viewModel(fromResponse response: [(PortfolioResponseModel, String)])-> [InstrumentCellDataModel] {
         var dataCells: [InstrumentCellDataModel] = []
         
-        for instrument in response {
-            let lastValue = instrument.0.dataset.data.first?.value ?? 0
-            let previousValue = instrument.0.dataset.data[1].value
-            let priceChangeString = priceChangeMutableString(forLastValue: lastValue, previousValue: previousValue)
-            
-            let firstMatchingInstrument = portfolioHoldings.first(where: {
-                $0.code == instrument.1
+        for instrumentInHolding in portfolioHoldings {
+            let firstMatchingResponseInstrument = response.first(where: {
+                $0.1 == instrumentInHolding.code
             })
             
-            if let matchingInstrument = firstMatchingInstrument {
-                let instrumentValue = lastValue * Double(matchingInstrument.quantity)
-                let cellDataModel = InstrumentCellDataModel(instrumentCode: matchingInstrument.code,
-                                                            instrumentName: matchingInstrument.name,
+            if let matchingInstrument = firstMatchingResponseInstrument {
+                
+                let lastValue = matchingInstrument.0.dataset.data.first?.value ?? 0
+                let previousValue = matchingInstrument.0.dataset.data[1].value
+                let priceChangeString = priceChangeMutableString(forLastValue: lastValue, previousValue: previousValue)
+
+                let instrumentValue = lastValue * Double(instrumentInHolding.quantity)
+                let cellDataModel = InstrumentCellDataModel(instrumentCode: instrumentInHolding.code,
+                                                            instrumentName: instrumentInHolding.name,
                                                             instrumentValue: String(format: "$%.2f", instrumentValue),
                                                             priceChange: priceChangeString)
                 dataCells.append(cellDataModel)
             }
+            
         }
+        
         return dataCells
     }
     
@@ -84,15 +96,15 @@ final class PortfolioInteractor: PortfolioInteractorInput {
         let percentagePriceDiff = (priceDiff/previousValue)*100
         
         let priceChangePrefix = priceDiff >= 0 ? "+" : "-"
-        
+        let appGreen = UIColor(red:0.42, green:0.74, blue:0.06, alpha:1.0)
         let priceChangeAttributes: [NSAttributedStringKey: Any] = [
-            .foregroundColor : UIColor.lightGray,
-            .font : UIFont.boldSystemFont(ofSize: 14)
+            .foregroundColor : priceDiff >= 0 ? appGreen : UIColor.red,
+            .font : UIFont.boldSystemFont(ofSize: 16)
         ]
         let priceChangeAttributedString = NSMutableAttributedString(string: String(format: "%@ %.2f\n", priceChangePrefix, abs(priceDiff)), attributes: priceChangeAttributes)
         
         let percentagePriceChangeAttributes: [NSAttributedStringKey: Any] = [
-            .foregroundColor : priceDiff >= 0 ? UIColor.green : UIColor.red,
+            .foregroundColor : priceDiff >= 0 ? appGreen : UIColor.red,
             .font : UIFont.boldSystemFont(ofSize: 14)
         ]
         let percentagePriceChangeAttributedString = NSMutableAttributedString(string: String(format: "(%.2f%%)", percentagePriceDiff), attributes: percentagePriceChangeAttributes)
@@ -102,5 +114,4 @@ final class PortfolioInteractor: PortfolioInteractorInput {
         mutableAttributedString.append(percentagePriceChangeAttributedString)
         return mutableAttributedString
     }
-    
 }
